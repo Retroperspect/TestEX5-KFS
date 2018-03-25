@@ -30,3 +30,17 @@ after succesfully running the tests with the logging code implemented, I find th
 ```
 This doesn't help me much other than saying it tries out a few different plates and attempts to compare templates of different plates with it atleast, I have yet to do the test with failure but I'll do that after this log post.   
 looking into the different functions called in `intelligenceSingleTest()` it seems `CarSnapshot` and `Intelligence` are they only classes used in this function, and after the use of the string image to find what it needs, it seems the test itself is hardcoded to test for the value "LM025BD" as seen in the last assert `assertEquals("LM025BD", spz);` this must clearly mean that by changing the picture it uses in the test it breaks at this code excatly.
+
+## 25-03-2018 16:45 aprox
+so yeah the previous statement about `assertEquals("LM025BD", spz);` was correct, it fails and as such the test can only test for one case.   
+On the `testAllSnapshots()` it's different, it seems to identify if the info is correct or incorrect, however I noticed a assert that fails to work as intended.
+```
+ String snapName = snap.getName();
+            String plateCorrect = properties.getProperty(snapName);
+            assertNotNull(plateCorrect);
+ ```
+ in this area the assertNotNull will never work, specifically because the `.getName();` function states the following.   
+ ![](https://i.gyazo.com/5b833cae155064299114f2cfd55fe292.png)   
+ `If the pathname's name sequence is empty, then the empty
+     * string is returned.`
+the string will always exist even if it's empty, therefor the assertNotNull will never catch that fact it's empty, if this is intended is unknown but it was interesting enough to write down about.
