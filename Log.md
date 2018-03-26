@@ -44,3 +44,9 @@ On the `testAllSnapshots()` it's different, it seems to identify if the info is 
  `If the pathname's name sequence is empty, then the empty
      * string is returned.`
 the string will always exist even if it's empty, therefor the assertNotNull will never catch that fact it's empty, if this is intended is unknown but it was interesting enough to write down about.
+
+## 26-03-2018 17:45 aprox
+been bashing my head on the parametized tests, didn't have much experience with it yet Tine seems to say we've done some exercise on it, the only thing I could find was the slides with a short showcase and her Demo project on github, I may just be forgetfull but this wasn't helpful at all.   
+After searching online for several examples I finally got the parametized testing to work, it seems like the test needed a constructor of all things, which I didn't catch in the beginning, so far my tests showcases 44 failures where it's not specifically red failures but yellow failures?.   
+![](https://i.gyazo.com/cb299a39c74744505f16e663ba9be8f3.png)   
+The difference seems to be yellow failures actually calls the functions and get to the point of comparing the info where it fails cause of missmatch, while the red hits a Null reference, which is wierd given the picture is there, so there's some code I'm unaware about as of this writing.
