@@ -50,3 +50,6 @@ been bashing my head on the parametized tests, didn't have much experience with 
 After searching online for several examples I finally got the parametized testing to work, it seems like the test needed a constructor of all things, which I didn't catch in the beginning, so far my tests showcases 44 failures where it's not specifically red failures but yellow failures?.   
 ![](https://i.gyazo.com/cb299a39c74744505f16e663ba9be8f3.png)   
 The difference seems to be yellow failures actually calls the functions and get to the point of comparing the info where it fails cause of missmatch, while the red hits a Null reference, which is wierd given the picture is there, so there's some code I'm unaware about as of this writing.
+
+## 26-03-2018 18:50 aprox
+after a meeting with the group we compared notes and found ourself half done with the first project, and by that I mean we've done the steps with the coding individually, but we havn't written down the documentation of our own projects, but that is for another time.
