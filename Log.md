@@ -53,3 +53,8 @@ The difference seems to be yellow failures actually calls the functions and get 
 
 ## 26-03-2018 18:50 aprox
 after a meeting with the group we compared notes and found ourself half done with the first project, and by that I mean we've done the steps with the coding individually, but we havn't written down the documentation of our own projects, but that is for another time.
+
+## 31-03-2018 13:00 aprox
+another time meaning way later than I should have done...   
+in anycase we had planned another meeting to sync up with eachother and verify eachothers progress to ensure eachothers individual succes with the assignment.   
+
