@@ -99,3 +99,9 @@ using Jacoco on the final code the result is as follows.
 ![](https://i.gyazo.com/daa8e49eb5edd6560158b0952fc2a2bc.png)   
 the code coverage shows what code is being used and in that senses tested, we can see JokeFetcher is mostly fully covered with test, yet there are 3 lines that are untested, funny the JokeFetcherTest has a much larger scale and lacks a method covered, it doesn't seem to allow me to find the specific parts not being used, but I reckon it's due to my inexperience in the IDE and Jacoco.
 
+### Making the untestable, testable
+it's mostly been covered in the first topic, but the general idea was to chop the code up into smaller pieces and revoke hidden dependencies, this allowed to test each individual function, another thing was making factory pattern to make use of the current existing code in a format, that allowed for easy use of polymorphism, and when the code was in seperate, it was possible to use Mockito to focus test without requiring the many dependencies for the test cases.
+
+
+## Final Note
+I'm sorry this is such a rush job, but it's the 2nd of april and I don't count tommorow as a work day, it's been a 10 hour crunch and I can't fine tune this much more.
