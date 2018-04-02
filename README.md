@@ -2,7 +2,7 @@
 > by Kristian Flejsborg Sørensen (cph-kf96)
 
 ## intro
-This is hte midterm assignment of the Test cause, which consist of 2 mandatory projects and 1 optional projects, which will be mandatory later down the road, so finishing it would be preferable.   
+This is the midterm assignment of the Test cause, which consist of 2 mandatory projects and 1 optional projects, which will be mandatory later down the road, so finishing it would be preferable.   
 
 ## project 1
 The first project is testing out the `JavaANPR - Automatic
@@ -26,3 +26,55 @@ The problem I find is my lack of knowledge to explain the exact differences give
 the implementation of the matcher was simple, as I only needed to add the dependency of it and import it into my project, with this I could change my final assert into a hamcrest one, where the test results gave the same information, but in a more structured way that allowed me to find the two previously mentioned failure cases of wrong result or null result.
 
 ## Project 2
+The second project is presented without any test cases, and a ugly mess of code to test, the purpose is to make untestable code testable and explain the process.
+
+### Making the code testable
+the original code violated Single Responsibility Principle and had many hidden dependencies, which made it practically impossible to make test cases for various behaviours in the code. To fix this it was needed to refactor the code and add dependency injections and Interfaces, this allowed for the use of mockito to make System Under Testing cases allowing for easier behaviour testing on the newly refactored code. It was also nessecary to refactor the private jokes functions into a factory pattern system to allow for polymorphism, which in turn allowed more use of mockito.
+
+### Tests
+as of now my current test cases looks as follows.
+```
+@Test
+    void getAvailableTypes() throws JokeException {
+        JokeFetcher JF = new JokeFetcher(factory,IDF);
+        assertThat(JF.getAvailableTypes(), equalTo(availableTypes));
+    }
+```
+```
+    @Test
+    void isStringValid() {
+        JokeFetcher JF = new JokeFetcher(factory,IDF);
+        assertThat(JF.isStringValid(availableTypes.get(0)),is(true));
+    }
+```
+```
+    @Test
+    void getJokes() throws JokeException {
+        JokeFetcher JF = new JokeFetcher(factory,IDF);
+        JF.getJokes("chucknorris","Europe/Copenhagen");
+        verify(IDF).getFormattedDate(eq("Europe/Copenhagen"),anyObject());
+        //verify(jokes).getJokes();
+    }
+```
+```
+    @Test
+    void testFetcher() throws JokeException
+    {
+        JokeFetcher JF = new JokeFetcher(factory,IDF);
+        JF.getJokes("chucknorris","Europe/Copenhagen");
+        verify(factory).getJokeFetchers(anyString());
+        given(factory.getJokeFetchers(anyString())).willReturn(Arrays.asList(eduJoke,chuckNorris,moma,tambal));
+        //given(eduJoke.getJoke()).willReturn(joke())
+        assertThat(factory.getJokeFetchers(anyString()).size(),is(4));
+    }
+```
+```
+    @Test
+    void FirstSimpleTest() throws JokeException {
+        JokeFetcher JF = new JokeFetcher(factory,IDF);
+        JF.getJokes("chucknorris","Europe/Copenhagen");
+        given(IDF.getFormattedDate(eq("Europe/Copenhagen"), anyObject())).willReturn("17 feb. 2018 10:56 AM");
+        //verify(joke).getJokes(eq("chucknorris"),eq("Europe/Copenhagen"),eq(time),eq(IDF)).timeZoneString.equals(anyString());
+        //assertThat(joke.getJokes("chucknorris","Europe/Copenhagen").timeZoneString,is(""));
+    }
+```
