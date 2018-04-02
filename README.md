@@ -85,3 +85,17 @@ Junit and Hamcrest are tools designed to help tester make easilly structured tes
 all these tools allow for greater testing with the correct use.
 
 ### Mockito
+I used Mockito to replace several dependencies outside the test code as shown here.   
+![](https://i.gyazo.com/3c1006da6ce4fb6b758430da00fec43d.png)   
+factory and IDF are both seperate interfaces that are implemented as mocks, this allows for JokeFetcher to be instantiated in a test enviorment without the originals running, likewise after running the `JF.getJokes();` I can verify the use of a command inside the JokeFetcher with the verify(IDF) line, effectively checking if the code did this behaviour succesfully.
+
+### State and behavior based testing
+I did both state based testing and behaviour based testing in this test.   
+![](https://i.gyazo.com/d3332753971558524f7a33c3c1793f79.png)   
+after starting and running I verify that it ran the `.getJokeFetchers();` and afterwards I tested it's state when given a specific input, where the state was expected to be a list of 4.   
+
+### Code Coverage
+using Jacoco on the final code the result is as follows.   
+![](https://i.gyazo.com/daa8e49eb5edd6560158b0952fc2a2bc.png)   
+the code coverage shows what code is being used and in that senses tested, we can see JokeFetcher is mostly fully covered with test, yet there are 3 lines that are untested, funny the JokeFetcherTest has a much larger scale and lacks a method covered, it doesn't seem to allow me to find the specific parts not being used, but I reckon it's due to my inexperience in the IDE and Jacoco.
+
