@@ -78,3 +78,10 @@ as of now my current test cases looks as follows.
         //assertThat(joke.getJokes("chucknorris","Europe/Copenhagen").timeZoneString,is(""));
     }
 ```
+and their results   
+![](https://i.gyazo.com/feec63bd5049bde805b15490f513c645.png)   
+### Testers Tools
+Junit and Hamcrest are tools designed to help tester make easilly structured tests and retrieve the desired information from said tests with ease. Mockito allows for the flexibility of testing SUTs `System Under Testing` while several dependencies are missing in action. Jacoco allows testers to gain a overview of what code is being tested and what code isn't through a full test coverage run.   
+all these tools allow for greater testing with the correct use.
+
+### Mockito
